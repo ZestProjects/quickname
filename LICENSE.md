@@ -1,7 +1,7 @@
 ### This project contains code with multiple licences. Please read the relavent information carefully to avoid misuse.
 
 Quickname (contained within the file `index.js`) is licensed under the
-[CC BY-NC-SA 4.0](#cc-by-nc-sa-4.0) license, however the regular expression used in the
+[CC BY-NC-SA 4.0](#cc-by-nc-sa-40) license, however the regular expression used in the
 `verifyUrl()` function is licensed under the [MIT License](#mit-license). Both licenses
 are listed below for convenience:
 
