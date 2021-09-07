@@ -1,0 +1,27 @@
+{
+	"name": "quickname",
+	"version": "1.2.0",
+	"description": "Not your average link shortener.",
+	"main": "index.js",
+	"private": true,
+	"author": {
+		"name": "Diab Neiroukh",
+		"email": "lazerl0rd@thezest.dev",
+		"url": "https://www.thezest.dev"
+	},
+	"bugs": "https://github.com/ZestProjects/quickname/issues",
+	"homepage": "https://quickna.me",
+	"license": "CC BY-NC-SA 4.0",
+	"keywords": [
+		"cf-worker",
+		"cloudflare",
+		"cloudflare worker",
+		"link",
+		"link shortener",
+		"worker"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ZestProjects/quickname.git"
+	}
+}
