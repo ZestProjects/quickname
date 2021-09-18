@@ -1,5 +1,9 @@
 addEventListener("fetch", (event) => {
-	let randValues = crypto.getRandomValues(new Uint8Array(252));
+	// The number of elements used here should [at least] be:
+	//    Sets (Different Nonces) * Nonce Length * 7
+	// where 7 denotes the number of Uint8 elements that cryptoRandom()
+	// requires to match the resolution of Math.random().
+	let randValues = crypto.getRandomValues(new Uint8Array(616));
 	let time = Date.now();
 	event.respondWith(
 		handleRequest(event.request, randValues, time).catch(
@@ -1040,14 +1044,19 @@ self.addEventListener('fetch', function (event) {
 }
 
 function nonceGenerator(randValues, set) {
-	// This may look weird, but it secures the nonce by having a better distribution of characters.
-	const charset = "+/0123456789+/+/ABCDEFGHIJKLMNOPQRSTUVWXYZ+/+/0123456789+/+/abcdefghijklmnopqrstuvwxyz+/+/0123456789+/";
+	const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	let nonce = "";
 
-	for (let i = 0; i < 9; i++) {
+	for (let i = 0; i < 22; i++) {
+		// The calculation here is used to provide a unique "section" of
+		// entropy taken from that which was generated during the event
+		// handler.
 		nonce += charset.charAt(Math.floor(cryptoRandom(randValues.slice(((((i + 1) * set) - 1) * 7), (((i + 1) * set) * 7))) * charset.length));
 	}
-	const ecc = ((nonce || '').match(RegExp(/[1-9]/g)) || []).length;
+	const ecc = ((nonce || '').match(RegExp(/[0-9]/g)) || []).length.toLocaleString(undefined, {
+		minimumIntegerDigits: 2
+	});
+
 	return (nonce + ecc);
 }
 
