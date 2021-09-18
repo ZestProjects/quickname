@@ -710,6 +710,10 @@ async function handleRequest(request, randValues, time) {
 			}
 		}
 
+		.form-control:focus {
+			box-shadow: 0 0 0 .25rem rgba(182, 227, 126, .25) !important;
+		}
+
 		.form-holder {
 			align-items: center;
 			display: flex;
