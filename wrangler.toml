@@ -4,9 +4,11 @@ type = "javascript"
 
 workers_dev = true
 
-routes = ["quickna.me/*"]
+routes = [
+  { pattern = "quickna.me", custom_domain = true }
+]
 zone_id = "cbac25da80f1dc9d98759d1228bbfa20"
 
 kv_namespaces = [
-  {binding = "KV_STORE", id = "e31284fa2fd64cf18808e1b3180d0e86"},
+  { binding = "KV_STORE", id = "e31284fa2fd64cf18808e1b3180d0e86" }
 ]
